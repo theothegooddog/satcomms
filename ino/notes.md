@@ -5,7 +5,7 @@
 
 ## misc
 
-- this is c
+- this is c++
   - specifically ino (or arduino)
   - not python
 
