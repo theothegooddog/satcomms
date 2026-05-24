@@ -9,6 +9,7 @@ bool available = Serial.available();
 
 void sendBit(bool bit) {
   digitalWrite(TX_PIN, bit);
+  digitalWrite(LED_BUILTIN, bit);
   delayMicroseconds(500);
 }
 
@@ -23,8 +24,10 @@ void transmit(String data) {
 
   // sync pulse
   digitalWrite(TX_PIN, HIGH);
+  digitalWrite(LED_BUILTIN, HIGH);
   delayMicroseconds(2000);
   digitalWrite(TX_PIN, LOW);
+  digitalWrite(LED_BUILTIN, LOW);
   delayMicroseconds(2000);
 
   // send characters
@@ -34,6 +37,7 @@ void transmit(String data) {
 
   // end pulse
   digitalWrite(TX_PIN, LOW);
+  digitalWrite(LED_BUILTIN, LOW);
 }
 
 void transmitinit(){
@@ -50,6 +54,7 @@ void setup() {
     delay(10);
     transmit(String(SFT)+ID+VER+"tt");
   }
+  digitalWrite(LED_BUILTIN, LOW);
 }
 
 void loop() {
